@@ -9,7 +9,7 @@ let timeValue = document.querySelector(".warehouse-data .time .value span");
 let i = 0;
 let date = new Date();
 function timeout() {
-  setTimeout(function () {
+  setTimeout(()=> {
     getMq2();
     getDht22();
     let date = new Date();
