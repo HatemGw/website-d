@@ -1,0 +1,286 @@
+/* start global variable */
+:root {
+    --main-color:turquoise ;
+    --second-color: gold;
+    --transparent-main-color: #06a8d08a;
+    --main-transition: 0.5s;
+    --badding-bottom: 100px;
+    --badding-top: 100px;
+
+
+}
+
+/* end global variable */
+/* start global rules */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+}
+
+ul {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+
+}
+
+
+/* end global rules */
+/*container*/
+
+/* start header   */
+.header {
+    background-color: white;
+    box-shadow: 0 0 10px #ddd;
+  }
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  @media (max-width: 767px) {
+    .header .container {
+      flex-direction: column;
+    }
+  }
+  .header .logo {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .header .logo img{
+    height: 65px;
+  }
+  
+  .header .container .nav {
+    display: flex;
+    justify-content: center;
+  }
+  .header .container .nav > li > a {
+    position: relative;
+    padding: 0 10px;
+    color: var(--main-color);
+    font-size: 18px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: var(--main-transitionA);
+    -webkit-transition: var(--main-transitionA);
+    -moz-transition: var(--main-transitionA);
+    -ms-transition: var(--main-transitionA);
+    -o-transition: var(--main-transitionA);
+  }
+  
+  .header .nav > li > a::before {
+    content: "";
+    height: 5px;
+    width: 100%;
+    background-color: var(--main-color-alt);
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: var(--main-transition);
+  
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+  }
+  .header .nav > li > a:hover {
+    background-color: rgb(245, 243, 243);
+    color: var(--second-color);
+  }
+  .header .nav > li > a:hover::before {
+    left: 0;
+  }
+/* end .header   */
+.project-title{
+    text-align: center;
+}
+
+/*start warehouses*/
+.warehouses{
+    padding-top: var(--badding-top);
+    padding-bottom: var(--badding-bottom);
+}
+.warehouses > .title{
+    padding: 40px 0;
+}
+.warehouses > .title h2{
+    text-align: center;
+    font-size: 40px;
+}
+
+.warehouses .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+.warehouses .main-box {
+    background-color: white;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0/13%), 0 2px 4px 0 rgb(0 0 0/ 12%);
+    counter-increment: services;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    position: relative;
+  }
+  .warehouses .main-box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    height: 3px;
+    top: -3px;
+    background-color: var(--main-color);
+    width: 0;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+  }
+  .warehouses .main-box:hover {
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+  }
+  .warehouses .main-box:hover::before {
+    width: 100%;
+  }
+  
+.warehouses .main-box > .title{
+    padding: 15px 0;
+    background-color: #f3f3f3;
+    border-bottom: var(--second-color) 1px solid;
+}
+
+.warehouses .main-box .title h3{
+    text-align: center;
+    color: var(--main-color);
+}
+
+.warehouses .main-box .data-box{
+}
+
+.warehouses .main-box .data-box .warehouse-data{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+    border-right: var(--second-color) 1px solid;
+
+}
+.warehouses .main-box .data-box .warehouse-data > div{
+    height: 75px;
+    border-bottom: var(--second-color) 1px solid;
+}
+.warehouses .main-box .data-box .warehouse-data > div .title{
+    padding: 10px 0 15px;
+    text-align: center;
+}
+.warehouses .main-box .data-box .warehouse-data > div .value{
+    padding-left: 15px;
+    padding-bottom: 15px;
+    display: flex;
+}
+.warehouses .main-box .data-box .warehouse-data > div .value span{
+    text-align: center;
+    flex-basis: 80%;
+}
+
+/*end warehouses*/
+/*start Location*/
+body >.location{
+    padding-top: var(--badding-top);
+    padding-bottom: var(--badding-bottom);
+}
+body >.location > .title{
+    padding: 40px 0;
+}
+body >.location > .title h2{
+    text-align: center;
+    font-size: 40px;
+}
+
+body >.location > .container{
+    background-image: url(../imgs/map.png);
+    position: relative;
+    width: 1150px;
+    height: 729px;
+}
+
+body >.location > .container span:nth-child(1){
+    position: absolute;
+    top: 280px;
+    left: 44%;
+    padding: 15px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+
+}
+
+body >.location > .container span:nth-child(2){
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    padding: 15px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+
+}
+body >.location > .container span .circle{
+    top: 15px;
+    left: 100px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border: var(--second-color) 2px solid;
+    border-radius: 50%;
+    animation: bumb 5s linear infinite;
+
+}
+
+@keyframes bumb{
+    0%, 100%{
+        
+        background-color: #9adb6e;
+    }
+    50%{
+        background-color: rgb(106, 255, 47); 
+    }
+}
+
+
+/*end Location*/
