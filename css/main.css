@@ -268,17 +268,17 @@ body >.location > .container span .circle{
     height: 20px;
     border: var(--second-color) 2px solid;
     border-radius: 50%;
-    animation: bumb 5s linear infinite;
+    animation: bumb 2s linear infinite;
 
 }
 
 @keyframes bumb{
-    0%, 100%{
+    0%, 100% {
         
-        background-color: #9adb6e;
+        background-color: #74f021;
     }
     50%{
-        background-color: rgb(106, 255, 47); 
+        background-color: rgb(255, 250, 250); 
     }
 }
 
