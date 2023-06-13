@@ -2,11 +2,15 @@
 
 
 //main varibales
+<<<<<<< HEAD
 let connectionValue = document.querySelector(".warehouse-data .connection .value span");
+=======
+>>>>>>> a149492f2f20a9ba44755d50f431556ed8702de2
 let mq2Value = document.querySelector(".warehouse-data .mq-2 .value span");
 let dht22Value = document.querySelector(".warehouse-data .dht22 .value span");
 let timeValue = document.querySelector(".warehouse-data .time .value span");
 
+<<<<<<< HEAD
 
 var conncetionMQ2;
 var connecctionDHT22;
@@ -17,6 +21,14 @@ function timeout() {
     getMq2();
     getDht22();
     getConnection();
+=======
+let i = 0;
+let date = new Date();
+function timeout() {
+  setTimeout(()=> {
+    getMq2();
+    getDht22();
+>>>>>>> a149492f2f20a9ba44755d50f431556ed8702de2
     let date = new Date();
     timeValue.innerHTML= `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
@@ -36,9 +48,12 @@ function getMq2() {
       //create container for data
       //sensor info
       mq2Value.innerHTML = data;
+<<<<<<< HEAD
       if(data == 0){
         conncetionMQ2 = 0;
       }
+=======
+>>>>>>> a149492f2f20a9ba44755d50f431556ed8702de2
       //time info
 
 
