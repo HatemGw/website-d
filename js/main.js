@@ -1,87 +1,54 @@
-//indexedDB
-
-
-//main varibales
+//main variables
 let connectionValue = document.querySelector(".warehouse-data .connection .value span");
-
 let mq2Value = document.querySelector(".warehouse-data .mq-2 .value span");
 let dht22Value = document.querySelector(".warehouse-data .dht22 .value span");
 let timeValue = document.querySelector(".warehouse-data .time .value span");
 
+let connectionMQ2;
+let connectionDHT22;
 
-var conncetionMQ2;
-var connecctionDHT22;
-let i = 0;
-let date = new Date();
 function timeout() {
-  setTimeout(function () {
+  setTimeout(() => {
     getMq2();
     getDht22();
     getConnection();
-let i = 0;
-let date = new Date();
-function timeout() {
-  setTimeout(()=> {
-    getMq2();
-    getDht22();
     let date = new Date();
-    timeValue.innerHTML= `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-
-
+    timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     timeout();
-    
   }, 1000);
 }
 
-
-
 function getMq2() {
   fetch(
-    `https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=6`
+    "https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=6"
   ).then((response) => {
     response.json().then((data) => {
-      //create container for data
-      //sensor info
       mq2Value.innerHTML = data;
-      if(data == 0){
-        conncetionMQ2 = 0;
+      if (data == 0) {
+        connectionMQ2 = 0;
       }
-      
     });
   });
-
 }
 
 function getDht22() {
   fetch(
-    `https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=8`
+    "https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=8"
   ).then((response) => {
     response.json().then((data) => {
-      //create container for data
-      //sensor info
       dht22Value.innerHTML = data;
-      if(data == 0){
-        connecctionDHT22 = 0;
+      if (data == 0) {
+        connectionDHT22 = 0;
       }
-      //time info
-
-
-      //appending to main container
-      //delete
-
-      
     });
   });
-
 }
 
-//connection
-function getConnection(){
-  if((conncetionMQ2 ==0)&& (connecctionDHT22 ==0)){
-    connectionValue.innerHTML = 'offline';
-  }
-  else{
-    connectionValue.innerHTML ='online';
+function getConnection() {
+  if (connectionMQ2 == 0 && connectionDHT22 == 0) {
+    connectionValue.innerHTML = "offline";
+  } else {
+    connectionValue.innerHTML = "online";
   }
 }
 
