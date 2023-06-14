@@ -85,13 +85,4 @@ function getConnection(){
   }
 }
 
-function getWeather(){
-  fetch('https://api.openweathermap.org/data/3.0/onecall?lat=32.36&lon=15.07exclude=alerts,daily,hourly,minutely&appid=f86085de609fb88c1602104f3fbc0d1b'
-  ).then((response)=>{
-    response.json().then((data) =>{
-
-    })
-  })
-}
-
 timeout();
