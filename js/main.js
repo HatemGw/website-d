@@ -8,14 +8,14 @@ let connectionMQ2;
 let connectionDHT22;
 
 function timeout() {
-setTimeout(() => {
-getMq2();
-getDht22();
-getConnection();
-let date = new Date();
-timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-timeout();
-}, 1000);
+  setTimeout(() => {
+    getMq2();
+    getDht22();
+    getConnection();
+    let date = new Date();
+    timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    timeout();
+  }, 1000);
 }
 
 let fileWriter;
@@ -37,6 +37,7 @@ function writeToFile(timeValue, mq2Value, dht22Value, connectionValue) {
     const data = `${timeValue}\t${mq2Value}\t${dht22Value}\t${connectionValue}\n`;
     const blob = new Blob([data], {type: "text/plain"});
     fileWriter.write(blob);
+    fileWriter.onwriteend = function() { fileWriter = null; };
   }
 }
 
@@ -48,6 +49,8 @@ function getMq2() {
       mq2Value.innerHTML = data;
       if (data == 0) {
         connectionMQ2 = 0;
+      } else {
+        connectionMQ2 = 1;
       }
       const date = new Date();
       const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
@@ -64,6 +67,8 @@ function getDht22() {
       dht22Value.innerHTML = data;
       if (data == 0) {
         connectionDHT22 = 0;
+      } else {
+        connectionDHT22 = 1;
       }
       const date = new Date();
       const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
@@ -82,10 +87,9 @@ function getConnection() {
     connectionValue.innerHTML = "online";
     const date = new Date();
     const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-    writeToFile(time, null, null, "online");
+   writeToFile(time, null, null, "online");
   }
 }
 
 initFileWriter();
-writeToFile();
 timeout();
