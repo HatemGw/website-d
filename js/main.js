@@ -13,7 +13,7 @@ getMq2();
 getDht22();
 getConnection();
 let date = new Date();
-timeValue.innerHTML = ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()};
+timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 timeout();
 }, 1000);
 }
