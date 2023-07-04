@@ -23,6 +23,7 @@ function getMq2() {
   ).then((response) => {
     response.json().then((data) => {
       mq2Value.innerHTML = data;
+      connectionMQ2 = data;
       if (data == 0) {
         connectionMQ2 = 0;
       }
@@ -36,6 +37,7 @@ function getDht22() {
   ).then((response) => {
     response.json().then((data) => {
       dht22Value.innerHTML = data;
+      connectionDHT22 = data;
       if (data == 0) {
         connectionDHT22 = 0;
       }
