@@ -2,7 +2,7 @@ let connectionValue = document.querySelector(".warehouse-data .connection .value
 let mq2Value = document.querySelector(".warehouse-data .mq-2 .value span");
 let dht22Value = document.querySelector(".warehouse-data .dht22 .value span");
 let timeValue = document.querySelector(".warehouse-data .time .value span");
-let status = document.querySelector(".js-status");
+let status = document.document.getElementById("status");
 
 let connectionMQ2 = 0;
 let connectionDHT22 = 0;
