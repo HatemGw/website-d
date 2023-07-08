@@ -3,7 +3,14 @@ let mq2Value = document.querySelector(".warehouse-data .mq-2 .value span");
 let dht22Value = document.querySelector(".warehouse-data .dht22 .value span");
 let timeValue = document.querySelector(".warehouse-data .time .value span");
 let status = document.getElementById("status");
-let DangeLocation = document.querySelector('.location-1 > span')
+let DangeLocation = document.querySelector('.location-1 > span');
+let tempValue = document.querySelector('.warehouses .warehouse-data .weather .value > span');
+//data for temperature api
+const apiKey = 'f86085de609fb88c1602104f3fbc0d1b';
+const city = 'Misratah, LY';
+const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+
 let connectionMQ2 = 0;
 let connectionDHT22 = 0;
 
@@ -11,6 +18,7 @@ function timeout() {
   setTimeout(() => {
     getMq2();
     getDht22();
+    getTemp();
     getConnection();
     getStatus();
     changeCircle();
@@ -66,6 +74,14 @@ function getDht22() {
   });
 }
 
+function getTemp(){
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Print the current temperature in Kelvin
+    tempValue.innerHTML = (data.main.temp - 273.15).toFixed(1)+ '°C';
+  });
+}
 //show if the location is online or not
 function getConnection() {
   if (connectionMQ2 == 0 && connectionDHT22 == 0) {
