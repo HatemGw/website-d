@@ -8,7 +8,7 @@ let tempValue = document.querySelector('.warehouses .warehouse-data .weather .va
 //data for temperature api
 const apiKey = 'f86085de609fb88c1602104f3fbc0d1b';
 const city = 'Misratah, LY';
-const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
 
 let connectionMQ2 = 0;
