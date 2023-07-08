@@ -9,30 +9,27 @@ let connectionDHT22 = 0;
 
 function timeout() {
   setTimeout(() => {
-    getStatus();
     getMq2();
     getDht22();
     getConnection();
+    getStatus();
     let date = new Date();
     timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     timeout();
   }, 1000);
 }
-function getStatus(){
-  // Get the text content of the element
-const text = status.textContent;
+function getStatus() {
+  if(connectionValue.innerHTML == 'offline'){
+    status.innerHTML='Dangerous';
+  }
+  else{
 
-// Split the text by whitespace into an array of words
-const words = text.split(' ');
-
-// Remove all but the last word from the array
-words.splice(0, words.length - 1);
-
-// Join the remaining words into a string
-const lastWord = words.join(' ');
-
-// Set the innerHTML of the element to the last word
-status.innerHTML = lastWord;
+    const text = status.textContent;
+    const words = text.split(' ');
+  
+    const lastWord = words[words.length - 1];
+    status.innerHTML = lastWord;
+  }
 }
 function getMq2() {
   fetch(
