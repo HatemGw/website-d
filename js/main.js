@@ -3,7 +3,7 @@ let mq2Value = document.querySelector(".warehouse-data .mq-2 .value span");
 let dht22Value = document.querySelector(".warehouse-data .dht22 .value span");
 let timeValue = document.querySelector(".warehouse-data .time .value span");
 let status = document.getElementById("status");
-
+let DangeLocation = document.querySelector('.location-1 > span')
 let connectionMQ2 = 0;
 let connectionDHT22 = 0;
 
@@ -13,11 +13,15 @@ function timeout() {
     getDht22();
     getConnection();
     getStatus();
+    changeCircle();
+
     let date = new Date();
     timeValue.innerHTML = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     timeout();
   }, 1000);
 }
+
+//show the last status of site
 function getStatus() {
   if(connectionValue.innerHTML == 'offline'){
     status.innerHTML='Dangerous';
@@ -31,6 +35,8 @@ function getStatus() {
     status.innerHTML = lastWord;
   }
 }
+
+//get MQ-2 data from blynk cloud
 function getMq2() {
   fetch(
     "https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=6"
@@ -45,6 +51,7 @@ function getMq2() {
   });
 }
 
+//get DHT22 data from blynk cloud
 function getDht22() {
   fetch(
     "https://ny3.blynk.cloud/external/api/get?token=U-nfUdhCpO9A5VhMmw7c6nULbVJWnFvM&dataStreamId=8"
@@ -59,11 +66,23 @@ function getDht22() {
   });
 }
 
+//show if the location is online or not
 function getConnection() {
   if (connectionMQ2 == 0 && connectionDHT22 == 0) {
     connectionValue.innerHTML = "offline";
   } else {
     connectionValue.innerHTML = "online";
+  }
+}
+
+
+//change location of site if safe=> green || if dangerous status => red;
+function changeCircle(){
+  if(status.innerHTML = 'Dangerous'){
+    DangeLocation.style.animationName = 'dange';
+  }
+  else{
+    DangeLocation.style.animationName = 'safe';
   }
 }
 
